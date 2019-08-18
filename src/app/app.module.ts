@@ -6,6 +6,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { PersonComponent } from './components/person/person.component';
+import { ListPersonComponent } from './components/list-person/list-person.component';
+import { FormPersonComponent } from './components/form-person/form-person.component';
+import { APPROUTING } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,13 @@ import { PersonComponent } from './components/person/person.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    PersonComponent
+    PersonComponent,
+    ListPersonComponent,
+    FormPersonComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    APPROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]
