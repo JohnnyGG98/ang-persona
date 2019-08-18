@@ -9,6 +9,7 @@ import { PersonComponent } from './components/person/person.component';
 import { ListPersonComponent } from './components/list-person/list-person.component';
 import { FormPersonComponent } from './components/form-person/form-person.component';
 import { APPROUTING } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { APPROUTING } from './app.routes';
   ],
   imports: [
     BrowserModule,
-    APPROUTING
+    APPROUTING,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

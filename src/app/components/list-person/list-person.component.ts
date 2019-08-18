@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonService } from '../../services/person.service';
+import { Person } from '../../models/person.model';
 
 @Component({
   selector: 'app-list-person',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPersonComponent implements OnInit {
 
-  constructor() { }
+  persons: Array<Person>;
+
+  constructor(private phttp: PersonService) {
+    this.getPersons();
+  }
 
   ngOnInit() {
+  }
+
+  getPersons() {
+    this.phttp.getAll().subscribe(
+      data => {
+        this.persons = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }
