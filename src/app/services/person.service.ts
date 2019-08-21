@@ -20,4 +20,10 @@ export class PersonService {
   getAll(): Observable<Person[]> {
     return this.http.get<Person[]>(this.url);
   }
+
+  // Guardamos la persona
+  post(json: Person): Observable<Person> {
+    return this.http.post<Person>(this.url, json);
+  }
+
 }
