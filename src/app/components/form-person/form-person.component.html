@@ -3,26 +3,46 @@
     <div class="row">
 
         <div class="col-md-6 border rounded mx-auto">
-            <form class="mx-2 my-4">
+            <form class="mx-2 my-4" [formGroup]="form" (ngSubmit)="onSubmit()">
 
                 <div class="form-group">
                     <label for="txtNombre" class="control-label">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" name="txtNombre" placeholder="Ingrese su nombre">
+                    <input formControlName="nombre" type="text" class="form-control" id="nombre" name="txtNombre" placeholder="Ingrese su nombre" [ngClass]="{ 'is-invalid': enviado && f.nombre.errors }">
+
+                    <div *ngIf="enviado && f.nombre.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombre.errors.required">Es obligatorio que ingrese su nombre.</div>
+                        <div *ngIf="f.nombre.errors.minlength">El nombre no debe ser tan corto</div>
+                    </div>
+
                 </div>
 
                 <div class="form-group">
                     <label for="txtApellido" class="control-label">Apellido:</label>
-                    <input type="text" class="form-control" id="apellido" name="txtApellido" placeholder="Ingrese su apellido">
+                    <input formControlName="apellido" type="text" class="form-control" id="apellido" name="txtApellido" placeholder="Ingrese su apellido" [ngClass]="{ 'is-invalid': enviado && f.apellido.errors}">
+
+                    <div *ngIf=" enviado && f.apellido.errors" class="invalid-feedback ">
+                        <div *ngIf="f.apellido.errors.required">Es obligatorio que ingrese su apellido.</div>
+                        <div *ngIf="f.apellido.errors.minlength">El apellido no debe ser tan corto</div>
+                    </div>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="txtCorreo" class="control-label">Correo:</label>
-                    <input type="email" class="form-control" id="correo" name="txtCorreo" placeholder="Ingrese su correo">
+                <div class="form-group ">
+                    <label for="txtCorreo " class="control-label">Correo:</label>
+                    <input formControlName="correo" type="email" class="form-control " id="correo" name="txtCorreo" placeholder="Ingrese su correo" [ngClass]="{ 'is-invalid': enviado && f.correo.errors}">
+
+                    <div *ngIf="enviado && f.correo.errors" class="invalid-feedback">
+                        <div *ngIf="f.correo.errors.required">Debe ingresar el correo, no es opcional.</div>
+                        <div *ngIf="f.correo.errors.email">Debe ingresar un email valido.</div>
+                    </div>
+
                 </div>
 
-                <button class="btn btn-success btn-lg" type="submit">
+                <button class="btn btn-success btn-lg btn-block" type="submit ">
                     Guardar Persona
                 </button>
+
+                <button class="btn btn-danger btn-block" (click)="onReset()">Cancelar</button>
 
             </form>
         </div>
